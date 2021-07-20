@@ -1,26 +1,45 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <h1 ref="greet">Hi</h1>
+  <input type="text" ref="name"/>
+  <button @click="clickHandler">Click</button>
+
+  <!--3.Use -->
+  <Modal></Modal>
+  <Modal/>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+// 1.import
+import Modal from "./components/Modal.vue"
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
+    data(){
+      return {
+        title:"You don't know js"
+      }
+    },
+    methods:{
+      clickHandler(){
+          // const input=document.getElementsByTagName('input');
+          // console.log(input);
+
+          console.log(this.$refs.name);
+          this.$refs.name.focus();
+          this.$refs.greet.textContent="Greeting";
+      }
+    },
+    components:{
+      //2.Register
+
+      Modal
+      // Modal:Modal
+    }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+#app{
+  width: 100vh;
+  height: 100vh;
 }
 </style>
