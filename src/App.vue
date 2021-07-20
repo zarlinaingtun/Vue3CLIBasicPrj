@@ -2,10 +2,11 @@
   <h1 ref="greet">Hi</h1>
   <input type="text" ref="name"/>
   <button @click="clickHandler">Click</button>
+  <p>Mornee</p>
 
   <!--3.Use -->
   <Modal></Modal>
-  <Modal/>
+  <!-- <Modal/> -->
 </template>
 
 <script>
@@ -30,16 +31,19 @@ export default {
     },
     components:{
       //2.Register
-
-      Modal
       // Modal:Modal
+      Modal
     }
 }
 </script>
 
-<style>
+<style scoped>
 #app{
   width: 100vh;
   height: 100vh;
+}
+
+h1{
+  color:blue;
 }
 </style>

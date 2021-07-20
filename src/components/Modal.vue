@@ -1,6 +1,7 @@
 <template>
   <div class="backdrop">
       <div class="modal">
+        <h1>Modal Title</h1>
           <p>Modal content</p>
       </div>
   </div>
@@ -13,7 +14,8 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+
   .backdrop{
       background-color: rgba(0,0,0,0.5);
       width:100%;
@@ -34,4 +36,8 @@ export default {
       border-radius: 10px;
       background-color: #fff;
   }
+  p{
+    font-style: normal;
+  }
+  
 </style>
