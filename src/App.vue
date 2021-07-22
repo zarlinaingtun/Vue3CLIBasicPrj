@@ -2,16 +2,16 @@
   <h1 ref="greet">Vue3 Js</h1>
   <input type="text" ref="name"/>
   <button @click="clickHandler">Click</button>
-  <div class="btn">
-    <button @click="successClick">Success</button>
-    <button @click="deleteClick">Delete</button>
-  </div>
-
-
+<br/>
   <!--3.Use -->
-  <Modal class="hide" :header="success.header" :content="success.content" :theme="success.theme" id="success"></Modal>
-  <Modal class="hide" :header="danger.header" :content="danger.content" :theme="danger.theme" id="danger"></Modal>
-  <!-- <Modal/> -->
+  <div v-if="success.showModal">
+  <Modal :header="success.header" :content="success.content" :theme="success.theme" @close="success.showModal=false"></Modal>
+  </div>
+    <div v-if="danger.showModal">
+  <Modal :header="danger.header" :content="danger.content" :theme="danger.theme" @close="danger.showModal=false"></Modal>
+  </div>
+  <button @click.right="success.showModal=true">Show Modal</button>
+  <button @click.alt="danger.showModal=true" id="delete">Delete Modal</button>
 </template>
 
 <script>
@@ -24,12 +24,14 @@ export default {
             success:{
                 header:"Login Success",
                 content:"Welcome From Our App",
-                theme:"success"
+                theme:"success",
+                showModal:false
             },
             danger:{
                 header:"Delete Process",
                 content:"Are you sure to delete it ?",
-                theme:"delete"
+                theme:"delete",
+                showModal:false
             }
       }
     },
@@ -77,16 +79,7 @@ h1{
   color:blue;
 }
 
-.hide{
-  display: none;
-}
-.show{
-  display: block;
-}
-.btn{
-  padding:20px;
-}
-.btn button{
+button{
   width:80px;
   height:50px;
   color:#fff;
@@ -96,13 +89,13 @@ h1{
   margin:5px;
   border-radius: 4px;
 }
-.btn button:focus{
+button:focus{
   transform: scale(0.899);
 }
-button:nth-child(1){
+button{
   background-color: green;
 }
-button:nth-child(2){
+button#delete{
   background-color: crimson;
 }
 </style>
