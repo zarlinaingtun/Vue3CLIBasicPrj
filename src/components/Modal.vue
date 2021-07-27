@@ -6,6 +6,11 @@
           <span>{{header}}</span>
           <span>{{content}}</span>
           <h1>{{showModal}}</h1>
+
+          <!-- get slot data if don't,show (Default) text -->
+          <slot>Default</slot>
+          <!-- call slot data by name -->
+          <slot name="links"></slot>
       </div>
   </div>
  

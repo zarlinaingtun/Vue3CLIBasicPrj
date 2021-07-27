@@ -3,18 +3,32 @@
   <input type="text" ref="name"/>
   <button @click="clickHandler">Click</button>
 <br/>
+
   <!--3.Use -->
-  <div v-if="success.showModal">
-  <Modal :header="success.header" :content="success.content" :theme="success.theme" @close="success.showModal=false"></Modal>
-  </div>
-    <div v-if="danger.showModal">
-  <Modal :header="danger.header" :content="danger.content" :theme="danger.theme" @close="danger.showModal=false"></Modal>
-  </div>
-  <button @click.right="success.showModal=true">Show Modal</button>
+  <teleport to=".modal" v-if="success.showModal">
+    <Modal :header="success.header" :content="success.content" :theme="success.theme" @close="success.showModal=false">
+      <!-- slot data -->
+      <h2>Hello I am Slot Data</h2>
+      <!-- send slot data by naming -->
+      <template v-slot:links>
+        <a href="#">Sign Up</a>
+        <a href="#">Register</a>
+      </template>
+    </Modal>
+  </teleport>
+
+
+  <teleport to=".modal" v-if="danger.showModal">
+    <Modal :header="danger.header" :content="danger.content" :theme="danger.theme" @close="danger.showModal=false"></Modal>
+  </teleport>
+
+
+  <button @click="success.showModal=true">Show Modal</button>
   <button @click.alt="danger.showModal=true" id="delete">Delete Modal</button>
 </template>
 
 <script>
+
 // 1.import
 import Modal from "./components/Modal.vue"
 
